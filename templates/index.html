@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A.D.A.M. AI Assistant</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <script>
+        window.addEventListener('resize', () => {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        });
+    </script>
+</head>
+<body>
+    <div id="main">
+        <div id="chat-interface">
+            <div id="chat-history">
+				<div id="chat-history-inner">
+					<div id="welcomemessage" class="ai_bubble">
+						<p id="message">Hello, I am A.D.A.M., your automated digital assistant mainframe! I am here to help you with your tasks and answer all your questions. This is an alpha version. Currently, I am capable of performing web searches, giving weather updates and managing your calendar, emails, and tasks.<a href="https://booming-oarlock-205714.oa.r.appspot.com/login">Login with your Google Account</a> to grant me access to automate your every day life.</p>
+					</div>
+				</div>
+			</div>
+            <div id="example-prompts-container">
+                <div class="example-prompt" onclick="setInputValue('Get me up to speed.')">Get me up to speed.</div>
+                <div class="example-prompt" onclick="setInputValue('Add “Grab a drinks w/ friends” to my calendar on Friday.')">Add “Grab a drinks w/ friends” to my calendar on Friday.</div>
+                <div class="example-prompt" onclick="setInputValue('Draft an Email to info@adam-ai.com')">Draft an Email to info@adam-ai.com</div>
+                <div class="example-prompt" onclick="setInputValue('Look up the rating for Titanic')">Look up the rating for Titanic</div>
+            </div>            
+            <div id="input-send-container">
+				<div id="input-container">
+					<button id="reset-button"><img id="reset-icon" src="../static/img/reset.png"></button>  <!-- New button -->
+					<div class="textarea-wrapper">
+                        <textarea id="user-input" placeholder="Press Enter for voice input or type your prompt"></textarea>
+                    </div>                    
+					<button id="speak"><img id="mic-icon" src="../static/img/mic-icon.png"></button>
+				</div>
+				
+				<button id="send-button" type="submit" onclick="sendCommand()">
+				<img id="send-icon" src="../static/img/send.png">
+				</button>
+			</div>
+        </div>
+        <!--
+        <div id="assistant-visualization">
+            <img id="assistant-image" src="https://cdn.dribbble.com/users/32512/screenshots/4787574/light_ai_design_by_gleb.gif"></img>
+        </div>
+        //-->
+    </div>
+
+<script src="../static/script.js"></script>
+</body>
+</html>

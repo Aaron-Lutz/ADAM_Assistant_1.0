@@ -1,0 +1,345 @@
+* {
+    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+#main {
+    display: flex;
+    height: 100vh;
+    font-family: Roboto;
+	font-weight: light;
+    background-image: url("https://i.pinimg.com/originals/ae/d1/1d/aed11d6975231b91c8e992c02b8376da.gif");
+    background-size: cover;
+    background-position: center;
+}
+
+a {
+    font-family: Roboto;
+	color: #7159FF;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+#chat-interface {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    padding: 10px;
+}
+
+#chat-history {
+    height: 90%;
+    border-radius: 20px;
+    overflow: hidden; /* Changed from overflow-y: auto; */
+    margin-bottom: 10px;
+    position: relative; /* New */
+}
+
+#chat-history-inner {
+    height: 100%;
+    padding: 2% 1% 2% 2%;
+    overflow-y: auto;
+}
+
+.ai_bubble {
+    width: fit-content;
+	max-width: 95%;
+	height: fit-content;
+    padding: 10px;
+    border-radius: 15px 15px 15px 2px;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    background-color: #F2F2F2;
+    overflow-wrap: break-word; /* This will break the link onto the next line if it's too long */
+    word-wrap: break-word; /* For older browsers */
+}
+
+.ai_bubble a {
+    white-space: nowrap; /* Prevents the link text from breaking onto multiple lines */
+    overflow: hidden; /* Hides the overflow */
+    text-overflow: ellipsis; /* Adds '...' for overflowed content */
+    display: inline-block; /* Makes the link behave like a block element but stay inline */
+    max-width: 90%; /* Adjust this value based on your design */
+    vertical-align: middle; /* Aligns the link vertically */
+}
+
+.user_bubble {
+    width: fit-content;
+	max-width: 95%;
+    padding: 10px;
+    border-radius: 15px 15px 2px 15px;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    background-color: #F2F2F2;
+	margin-left: auto;
+	margin-right: 0;
+}
+
+#message {
+	margin: auto;
+}
+
+.textarea-wrapper {
+    width: 90%;
+}
+
+#example-prompts-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    overflow-x: auto;
+    overflow-x: visible;
+}
+
+.example-prompt {
+    display: flex;
+    flex-basis: calc(50% - 10px);
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.example-prompt:hover {
+    background-color: #e0e0e0;
+}
+
+
+#input-send-container {
+    /*position: absolute;*/
+    bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    background: white;
+    border-radius: 20px;
+}
+
+#input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 150%; /* You can adjust this as needed */
+    border-radius: 20px;
+    /*height: 3em; /* Set to the initial height of the text */
+    overflow: hidden;
+}
+
+#user-input {
+    width: 100%;
+    min-height: 3em;
+    height: 3em;
+    padding: 10px 2px 10px 50px; /* Adjust this to get the desired vertical positioning */
+    border: none;
+    resize: none;  /* This prevents manual resizing */
+    overflow: hidden;  /* This hides the scrollbar */
+    font-family: Roboto;
+    vertical-align: middle; /* Add this */
+}
+
+
+#reset-button {
+    position: absolute;
+    left: 5px; /* Adjust based on your design requirements */
+    top: 50%;
+    z-index: 1;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+}
+
+#reset-icon {
+    width: 20px;  /* Adjust as needed */
+    height: 20px;  /* Adjust as needed */
+}
+#reset-icon:hover{
+    cursor: pointer;
+}
+
+
+#send-button {
+	border: none;
+	background: transparent;
+	margin-left: 2%;
+    padding-right: 2%;    
+	width: 10%;
+}
+
+#user-input:focus {
+    outline: none;
+}
+
+#speak {
+    position: absolute;
+    right: 10px;
+    border: none;
+    background-color: transparent;
+}
+
+#mic-icon {
+    height: 20px;
+    width: auto;
+}
+
+
+#mic-icon:hover {
+	height: 20px;
+    width: auto;
+	cursor: pointer;
+}
+
+#send-icon {
+	height: 35px;
+    width: auto;
+	cursor: pointer;
+}
+
+#assistant-visualization {
+    flex-grow: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+#assistant-image {
+    width: 100%;
+    height: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.typing_bubble {
+    display: flex;
+    justify-content: space-evenly;
+    width: 20%;
+    height: 35px;
+    padding: 15px;
+    border-radius: 15px 15px 15px 2px;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    background-color: #F2F2F2;
+}
+
+.typing_bubble span {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background-color: #000;
+    border-radius: 50%;
+    animation: typing 1s infinite;
+}
+
+.typing_bubble span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing_bubble span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+@keyframes talking {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+
+#assistant-image.talking {
+    animation: talking 0.35s infinite;
+    transform-origin: center;
+}
+
+
+
+/* Media query for mobile devices */
+@media (max-width: 800px) {    
+
+    body {
+        overflow: hidden;
+    }
+    
+
+    #main {
+        height: 100%;
+    }
+    
+    #chat-interface {
+        display: flex;
+        flex-direction: column;
+        height: 97%;
+		width: 100vw;
+		margin: 0;
+		/*padding: 10px;*/
+    }
+    #chat-history {
+        overflow-y: auto;  /* to allow scrolling if the content overflows */
+        height: calc(100% - 50px);  /* assuming your #input-send-container is 50px tall, adjust as needed */
+		/*background: rgba(0,0,0,0.5);*/
+        margin-bottom: 5%;
+        border: none;
+        padding: 0;
+	}
+    #user-input {
+        min-height: 4em;
+        font-size: 16px;
+        width: 80%;
+        padding: 13px 2px 10px 40px; /* Adjust this */
+        vertical-align: middle; /* Add this */
+    }
+
+	#input-container{
+        /*height: 3em; /* Set to the initial height of the text */
+        overflow: hidden;
+	}
+	
+	#send-button {
+		height: 3.5em;
+		padding: 0px 3px 3px 3px;
+		background-color: #7159FF;
+		border-radius: 50%;
+	}
+	
+	#send-icon {
+		filter: brightness(0) invert(1);
+	}
+	
+	#assistant-image {
+		display: none;
+	}
+	#assistant-video {
+        display: none;
+    }      
+}
+	
+    
+
+
